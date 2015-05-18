@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while read line; do
+  filename=`echo $line | tr 'āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜĀÁǍÀĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙǕǗǙǛ' 'aaaaeeeeiiiioooouuuuüüüüAAAAEEEEIIIIOOOOUUUUÜÜÜÜ'`
+  say -v Amelie -r 120 "$line" -o $filename.aiff
+  lame -m m $filename.aiff $filename.mp3
+  rm $filename.aiff
+done < words.txt
