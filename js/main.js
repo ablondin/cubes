@@ -21,14 +21,15 @@ function create() {
     demarrer = game.add.sprite(WIDTH / 2, HEIGHT / 2, 'demarrer');
     demarrer.anchor.setTo(0.5, 0.5);
     demarrer.inputEnabled = true;
-    demarrer.events.onInputDown.add(gofull);
+    demarrer.events.onInputDown.add(gofull, this);
     demarrer.events.onInputOver.add(over, this);
     demarrer.events.onInputOut.add(out, this);
 }
 
 // Events
-function gofull() {
+function gofull(sprite) {
     game.scale.startFullScreen(false);
+    sprite.kill();
 }
 
 function over(sprite) {
